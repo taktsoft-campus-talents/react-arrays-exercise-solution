@@ -1,8 +1,12 @@
-# React + Vite
+# React Arrays Exercise - Solution Proposal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Handling of arrays & objects in complex structures
+  - Array of objects with nested objects as properties
+- Array methods
+  - `.map`, `.toSorted` & `.filter`
+- Complex ternary operators
+- React components & props
+- Functions: applyFilters accepts a users array as parameter and returns a filtered/sorted array
+- React State: As little as possible! Try to derive as much as possible from existing state!
+- React state variables should be "The single source of truth"
+- Conditional rendering: Set classes/styles depending on the value of a state variable. (e.g. button `active`class)
