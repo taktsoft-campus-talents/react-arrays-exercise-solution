@@ -1,1 +1,23 @@
 /* Add your CSS here  */
+.filter-container {
+  display: flex;
+  gap: 1em;
+}
+
+.filter-container button {
+  padding: 0.5em 1em;
+  background-color: #3a506b;
+  border-radius: 6px;
+  color: white;
+  border: none;
+}
+
+.filter-container button:hover {
+  background-color: #1c2541;
+  cursor: pointer;
+}
+
+.filter-container button.active {
+  background-color: #5bc0be;
+  color: black;
+}
