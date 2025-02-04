@@ -1,37 +1,37 @@
 import "./App.css";
 import { useState } from "react";
-import { users } from "./data/usersComplete";
+import { usersData } from "./data/usersComplete";
 import { UserProfile } from "./components/UserProfile";
 
 // Good luck with the exercise 💪
 function App() {
-  // "all", "men", "women", "by-age", "by-name"
-  const [activeFilter, setActiveFilter] = useState("all");
+  // null, "men", "women"
+  const [activeFilter, setActiveFilter] = useState(null);
+  // null, "by-name", "by-age"
+  const [activeSorting, setActiveSorting] = useState(null);
 
   console.log("App will be rendered with activeFilter=", activeFilter);
 
   // should return an array of users, filtered or sorted according to the activeFilter state
-  function applyFilters() {
-    if (activeFilter === "women") {
-      return users.filter((user) => user.gender === "female");
-    }
-    if (activeFilter === "men") {
-      return users.filter((user) => user.gender === "male");
-    }
-    if (activeFilter === "by-age") {
-      return users.toSorted((userA, userB) => {
-        return userA.dob.age - userB.dob.age;
+  function applyFilters(users) {
+    return users
+      .filter((user) => {
+        return activeFilter === "women"
+          ? user.gender === "female"
+          : activeFilter === "men"
+          ? user.gender === "male"
+          : true;
+      })
+      .toSorted((userA, userB) => {
+        return activeSorting === "by-name"
+          ? userA.name.last.localeCompare(userB.name.last)
+          : activeSorting === "by-age"
+          ? userA.dob.age - userB.dob.age
+          : 0;
       });
-    }
-    if (activeFilter === "by-name") {
-      return users.toSorted((userA, userB) => {
-        return userA.name.last.localeCompare(userB.name.last);
-      });
-    }
-    return users;
   }
 
-  const filteredUsers = applyFilters();
+  const filteredUsers = applyFilters(usersData);
 
   return (
     <>
@@ -42,11 +42,11 @@ function App() {
         <section className="filter-container">
           <button
             onClick={() => {
-              setActiveFilter("all");
+              setActiveFilter(null);
             }}
-            className={activeFilter === "all" ? "active" : null}
+            className={activeFilter === null ? "active" : null}
           >
-            All
+            All genders
           </button>
           <button
             onClick={() => {
@@ -66,17 +66,25 @@ function App() {
           </button>
           <button
             onClick={() => {
-              setActiveFilter("by-name");
+              setActiveSorting(null);
             }}
-            className={activeFilter === "by-name" ? "active" : null}
+            className={activeSorting === null ? "active" : null}
+          >
+            Unsorted
+          </button>
+          <button
+            onClick={() => {
+              setActiveSorting("by-name");
+            }}
+            className={activeSorting === "by-name" ? "active" : null}
           >
             By Name
           </button>
           <button
             onClick={() => {
-              setActiveFilter("by-age");
+              setActiveSorting("by-age");
             }}
-            className={activeFilter === "by-age" ? "active" : null}
+            className={activeSorting === "by-age" ? "active" : null}
           >
             By Age
           </button>
