@@ -1,1 +1,12 @@
 /* Add your CSS here  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  font-family: arial;
+}

@@ -1,5 +1,6 @@
 /* Add your CSS here  */
 .filter-container {
+  padding: 12px 0;
   display: flex;
   gap: 1em;
 }
@@ -20,4 +21,12 @@
 .filter-container button.active {
   background-color: #5bc0be;
   color: black;
+}
+
+.user-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+
+  gap: 6px;
 }
